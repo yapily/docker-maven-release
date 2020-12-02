@@ -59,7 +59,8 @@ APP_VERSION=`xmllint --xpath '/*[local-name()="project"]/*[local-name()="version
 #verify we are not on a release tag
 if [[ "$APP_VERSION" == *0 ]]; then 
      echo "Release is not a snapshot, move to next patch version and to snapshot"
-     mvn  build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
+     echo "Do mvn build-helper:parse-version with options $MAVEN_REPO_LOCAL $RELEASE_PREPARE_OPTS"
+     mvn $MAVEN_REPO_LOCAL $RELEASE_PREPARE_OPTS build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT
      git commit -am "Prepare version for next release"
 fi
 
