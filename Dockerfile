@@ -7,4 +7,7 @@ COPY ./add-ssh-key.sh /usr/local/bin
 COPY ./release.sh /usr/local/bin
 COPY ./settings.xml /usr/share/maven/conf
 COPY ./simplelogger.properties /usr/share/java/maven-3/conf/logging/simplelogger.properties
+
+ENV GIT_SSH=/usr/bin/ssh
+
 RUN mkdir /root/.m2
