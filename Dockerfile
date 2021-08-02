@@ -1,6 +1,6 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
 
-RUN apk update && apk add maven git openssh gnupg libxml2-utils vim
+RUN apk update && apk add maven git openssh gnupg libxml2-utils libc6-compat vim
 RUN apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 COPY ./add-ssh-key.sh /usr/local/bin
